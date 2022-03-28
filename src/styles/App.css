@@ -44,3 +44,23 @@
 .correct-word{
   margin-left: 10rem;
 }
+
+
+.keyboard{
+  margin-top: 1rem;
+}
+.keyboard-row{
+  display: flex;
+
+}
+.single-key{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  width: 5vh;
+  height: 5vh;
+  margin-left: .5rem;
+  margin-top: .1rem;
+  text-align: center;
+  line-height: 5vh;
+}
