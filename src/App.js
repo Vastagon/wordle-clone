@@ -31,6 +31,7 @@ function App() {
 
     if(currentWord == textInput){
       alert("YOU WIN")
+      window.reload()
     }
 
     ///Checks each letter to check for similarities
@@ -61,6 +62,7 @@ function App() {
       {heightCounter === 3 ? <WordRow  textInput={textInput}/> : <PrevWordRow setWrongLetters={setWrongLetters} wrongLetters={wrongLetters} currentWord={currentWord} greenArrays={greenArrays[3]} letterPositions={letterPositions} previousTries={previousTries[3]}/>}
       {heightCounter === 4 ? <WordRow  textInput={textInput}/> : <PrevWordRow setWrongLetters={setWrongLetters} wrongLetters={wrongLetters} currentWord={currentWord} greenArrays={greenArrays[4]} letterPositions={letterPositions} previousTries={previousTries[4]}/>}
       {heightCounter === 5 ? <WordRow  textInput={textInput}/> : <PrevWordRow setWrongLetters={setWrongLetters} wrongLetters={wrongLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
+      {heightCounter === 6 ? <p className="correct-word">Correct Word: {currentWord}</p> : null}
       <form onSubmit={handleFormSubmit}>
         <input onChange={handleTextInput} type="text" className="text-input" id="text-input" />
         <button type='submit'>Submit</button>
