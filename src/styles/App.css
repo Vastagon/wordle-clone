@@ -41,6 +41,9 @@
 .yellow-square{
   background-color: yellow;
 }
+.white-square{
+  background-color: white;
+}
 .correct-word{
   margin-left: 10rem;
 }
