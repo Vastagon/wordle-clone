@@ -18,7 +18,7 @@ function App() {
   const incorrectLetter = new Map()
 ///probably remove currentWordMap
   // console.log(currentWordMap)
-  console.log(currentWord)
+  // console.log(currentWord)
 
   for(let i = 0; i < 5; i++){
     currentWordMap.set(currentWord.substring(i,i+1), currentWord.substring(i,i+1))
@@ -77,7 +77,6 @@ function App() {
       {heightCounter === 6 ? <p className="correct-word">Correct Word: {currentWord}</p> : null}
       <form autoComplete="off" onSubmit={handleFormSubmit}>
         <input onChange={handleTextInput} type="text" className="text-input" id="text-input" />
-        <button type='submit'>Submit</button>
       </form>
       <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} currentWordMap={currentWordMap} maybeLetters={maybeLetters}/>
     </div>

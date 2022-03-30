@@ -28,7 +28,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
         }
 
     }
-    console.log(incorrectLetter)
+    // console.log(incorrectLetter)
     // console.log(greenWordValue)
 
     return(
