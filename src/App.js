@@ -3,7 +3,7 @@ import wordsList from "./words.json"
 import WordRow from "./components/WordRow"
 import PrevWordRow from './components/PrevWordRow';
 import Keyboard from "./components/Keyboard"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
 function App() {
   const [maybeLetters, setmaybeLetters] = useState([])
@@ -20,6 +20,11 @@ function App() {
   // console.log(currentWordMap)
   // console.log(currentWord)
 
+  useEffect(() => {
+    document.getElementById('text-input').focus()
+
+  }, [])
+
   for(let i = 0; i < 5; i++){
     currentWordMap.set(currentWord.substring(i,i+1), currentWord.substring(i,i+1))
   }
@@ -29,7 +34,7 @@ function App() {
     if(e.target.value.length >= 6){
 
     }else{
-      setTextInput(e.target.value)
+      setTextInput(e.target.value.toLowerCase())
     }
   }
 
@@ -63,11 +68,14 @@ function App() {
 
   }
 
+  function focusCursor(){
+    document.getElementById('text-input').focus()
+  }
 
   // console.log(maybeLetters)
   // console.log(greenArrays)
   return (
-    <div className="App">
+    <div onClick={focusCursor} className="App">
       {heightCounter === 0 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}
       {heightCounter === 1 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[1]} letterPositions={letterPositions} previousTries={previousTries[1]}/>}
       {heightCounter === 2 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[2]} letterPositions={letterPositions} previousTries={previousTries[2]}/>}
@@ -76,7 +84,7 @@ function App() {
       {heightCounter === 5 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
       {heightCounter === 6 ? <p className="correct-word">Correct Word: {currentWord}</p> : null}
       <form autoComplete="off" onSubmit={handleFormSubmit}>
-        <input onChange={handleTextInput} type="text" className="text-input" id="text-input" />
+        <input id="text-input" onChange={handleTextInput} type="text" className="text-input"  />
       </form>
       <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} currentWordMap={currentWordMap} maybeLetters={maybeLetters}/>
     </div>
