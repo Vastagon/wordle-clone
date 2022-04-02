@@ -21,6 +21,7 @@
 }
 .individual-letter-square{
   border-color: black;
+  background-color: white;
   border-style: solid;
   border-width: 2px;
   width: 10vh;
@@ -30,11 +31,14 @@
   text-align: center;
   line-height: 10vh;
   font-size: 2rem;
+  z-index: 3;
 }
 .text-input{
   margin-top: 1.5rem;
   position: absolute;
-  top: -50vh;
+  top: 40vh;
+  z-index: 0;
+  width: 1vh;
 }
 .green-square{
   background-color: green;
@@ -48,11 +52,6 @@
 .white-square{
   background-color: white;
 }
-.correct-word{
-  margin-left: 10rem;
-}
-
-
 .keyboard{
   margin-top: 1rem;
   display: flex;
@@ -78,6 +77,9 @@
 }
 
 @media screen and (max-width: 450px) {
+  .App{
+    margin-top: 70vh;
+  }
   .single-key{
     width: 3.7vh;
     height: 3.7vh;
@@ -86,20 +88,31 @@
     line-height: 3.7vh;
   }
   .individual-letter-square{
-    width: 8vh;
-    height: 8vh;
-    margin-left: 4px;
-    line-height: 8vh;
+    width: 6vh;
+    height: 6vh;
+    margin-left: 0;
+    line-height: 6vh;
     font-size: 2rem;
+    border-right: none;
+  }
+  .rightmost-square{
+    border-right: solid;
+    border-width: 2px;
+  }
+  .word-row{
+    margin-top: 0;
+    height: 6vh;
   }
 }
 @media screen and (max-width: 350px) {
   .individual-letter-square{
-    width: 7vh;
-    height: 7vh;
-    margin-left: 4px;
-    line-height: 7vh;
+    width: 4vh;
+    height: 4vh;
+    line-height: 4vh;
     font-size: 2rem;
+  }
+  .word-row{
+    height: 4vh;
   }
   .App{
     margin-left: 7%;

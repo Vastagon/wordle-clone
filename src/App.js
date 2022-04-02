@@ -13,26 +13,35 @@ function App() {
   const [currentWord, setCurrentWord] = useState(wordsList[Math.floor(Math.random() * wordsList.length)])
   const [textInput, setTextInput] = useState("")
   const [greenArrays, setgreenArrays] = useState([])
-  const currentWordMap = new Map()
+  const [heightScoreValues, setHeightScoreValues] = useState([])
   const greenWordValue = new Map()
   const incorrectLetter = new Map()
-///probably remove currentWordMap
-  // console.log(currentWordMap)
-  // console.log(currentWord)
+  let [complete, setComplete] = useState(false)
 
-  useEffect(() => {
-    document.getElementById('text-input').focus()
+  console.log(currentWord)
 
+
+  ///sets state from localStorage on page render
+  useEffect(() =>{
+    if (typeof(Storage) !== "undefined") {
+      setHeightScoreValues((localStorage.heightC))
+    }else{
+      setHeightScoreValues([0,0,0,0,0,0])
+    }
   }, [])
 
-  for(let i = 0; i < 5; i++){
-    currentWordMap.set(currentWord.substring(i,i+1), currentWord.substring(i,i+1))
-  }
+
+  console.log(heightScoreValues)
+
+  ///Focus on text input when the page loads
+  useEffect(() => {
+    document.getElementById('text-input').focus()
+  }, [])
+
 
 
   function handleTextInput(e){
     if(e.target.value.length >= 6){
-
     }else{
       setTextInput(e.target.value.toLowerCase())
     }
@@ -46,6 +55,11 @@ function App() {
       previousTries.push(textInput)
 
       if(currentWord === textInput){
+        setComplete(true)
+
+     
+        heightScoreValues[heightCounter] = heightScoreValues[heightCounter] + 1
+        localStorage.heightC = heightScoreValues
         alert("YOU WIN")
       }
 
@@ -76,17 +90,17 @@ function App() {
   // console.log(greenArrays)
   return (
     <div onClick={focusCursor} className="App">
-      {heightCounter === 0 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}
-      {heightCounter === 1 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[1]} letterPositions={letterPositions} previousTries={previousTries[1]}/>}
-      {heightCounter === 2 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[2]} letterPositions={letterPositions} previousTries={previousTries[2]}/>}
-      {heightCounter === 3 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[3]} letterPositions={letterPositions} previousTries={previousTries[3]}/>}
-      {heightCounter === 4 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[4]} letterPositions={letterPositions} previousTries={previousTries[4]}/>}
-      {heightCounter === 5 ? <WordRow  textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
+      {heightCounter === 0 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}
+      {heightCounter === 1 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[1]} letterPositions={letterPositions} previousTries={previousTries[1]}/>}
+      {heightCounter === 2 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[2]} letterPositions={letterPositions} previousTries={previousTries[2]}/>}
+      {heightCounter === 3 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[3]} letterPositions={letterPositions} previousTries={previousTries[3]}/>}
+      {heightCounter === 4 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[4]} letterPositions={letterPositions} previousTries={previousTries[4]}/>}
+      {heightCounter === 5 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
       {heightCounter === 6 ? <p className="correct-word">Correct Word: {currentWord}</p> : null}
       <form autoComplete="off" onSubmit={handleFormSubmit}>
-        <input id="text-input" onChange={handleTextInput} type="text" className="text-input"  />
+        {complete ? null : <input id="text-input" onChange={handleTextInput} type="text" className="text-input" />}
       </form>
-      <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} currentWordMap={currentWordMap} maybeLetters={maybeLetters}/>
+      <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} maybeLetters={maybeLetters}/>
     </div>
   );
 }

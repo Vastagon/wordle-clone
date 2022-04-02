@@ -8,7 +8,8 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
     ///Only when first word is added
     if(greenArrays){
         greenArrays = greenArrays[0]
-///Adds values to hashmap for correct placements
+
+        ///Adds values to hashmap for correct placements
         for(let i = 0; i < 5; i++){
             ///Greenword saves the indexes of green letters
             greenWord.set(greenArrays[i], greenArrays[i])
@@ -42,7 +43,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
             }else{
                 incorrectLetter.set(previousTries?.substring(0,1), previousTries?.substring(0,1))
                 return (<div id="s1" className='gray-square individual-letter-square'>{previousTries?.substring(0,1)}</div>)
-            }    
+            }  
         
         })()
         }
@@ -57,7 +58,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
             }else{
                 incorrectLetter.set(previousTries?.substring(1,2), previousTries?.substring(1,2))
                 return (<div id="s2" className='gray-square individual-letter-square'>{previousTries?.substring(1,2)}</div>)
-            }   
+            } 
             
             })()
             }
@@ -72,7 +73,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
             }else{
                 incorrectLetter.set(previousTries?.substring(2,3), previousTries?.substring(2,3))
                 return (<div id="s3" className='gray-square individual-letter-square'>{previousTries?.substring(2,3)}</div>)
-            }       
+            }     
             
             })()
             }
@@ -87,7 +88,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
             }else{
                 incorrectLetter.set(previousTries?.substring(3,4), previousTries?.substring(3,4))
                 return (<div id="s4" className='gray-square individual-letter-square'>{previousTries?.substring(3,4)}</div>)
-            }  
+            }
         
         })()
         }
@@ -96,13 +97,13 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
         {(() => {
             if(greenWord.has(4)){
                 greenWordValue.set(previousTries?.substring(4,5),previousTries?.substring(4,5))
-                return(<div id="s5" className='green-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
+                return(<div id="s5" className='rightmost-square green-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
             }else if(yellowWord.has(4)){
-                return(<div id="s5" className='yellow-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
+                return(<div id="s5" className='rightmost-square yellow-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
             }else{
                 incorrectLetter.set(previousTries?.substring(4,5), previousTries?.substring(4,5))
-                return(<div id="s5" className='gray-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
-            }   
+                return(<div id="s5" className='rightmost-square gray-square individual-letter-square'>{previousTries?.substring(4,5)}</div>)
+            } 
         
         })()
         }
