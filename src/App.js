@@ -72,7 +72,7 @@ function App() {
     }
 
   }
-
+  console.log("HELP")
   function focusCursor(){
     document.getElementById('text-input').focus()
   }
@@ -93,7 +93,7 @@ function App() {
       </form>
       {complete ? <WinScreen heightScoreValues={heightScoreValues}/> : null}
       <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} maybeLetters={maybeLetters}/>
-    </div>
+    </div>  
   );
 }
 
