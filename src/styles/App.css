@@ -1,0 +1,138 @@
+#root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.App{
+  position: absolute;
+  margin-top: 100vh;
+  display: flex;
+  width: 99vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.word-row{
+  height: 10vh;
+  position: relative;
+  display: flex;
+  margin-top: 8px;
+}
+.individual-letter-square{
+  border-color: black;
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  width: 10vh;
+  height: 10vh;
+  margin-left: 4px;
+  position: relative;
+  text-align: center;
+  line-height: 10vh;
+  font-size: 2rem;
+  z-index: 3;
+}
+.text-input{
+  margin-top: 1.5rem;
+  position: absolute;
+  top: 40vh;
+  z-index: 0;
+  width: 1vh;
+}
+.green-square{
+  background-color: green;
+}
+.gray-square{
+  background-color: gray;
+}
+.yellow-square{
+  background-color: yellow;
+}
+.white-square{
+  background-color: white;
+}
+.keyboard{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.keyboard-row{
+  display: flex;
+
+}
+.single-key{
+  font-size: 1.5rem;
+  border-color: black;
+  border-width: 1.2px;
+  border-style: solid;
+  width: 5vh;
+  height: 5vh;
+  margin-left: .5rem;
+  margin-top: .2rem;
+  text-align: center;
+  line-height: 5vh;
+}
+.win-screen{
+  background-color: black;
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+  top: 20vh;
+  left: 30vw;
+  z-index: 5;
+  color: white;
+}
+.win-segment{
+  height: 10%;
+  margin-left: 5%;
+}
+.refresh-button{
+  width: 60%;
+  margin-left: 20%;
+}
+
+@media screen and (max-width: 450px) {
+  .App{
+    margin-top: 70vh;
+  }
+  .single-key{
+    width: 3.7vh;
+    height: 3.7vh;
+    margin-left: .3rem;
+    margin-top: .2rem;
+    line-height: 3.7vh;
+  }
+  .individual-letter-square{
+    width: 6vh;
+    height: 6vh;
+    margin-left: 0;
+    line-height: 6vh;
+    font-size: 2rem;
+    border-right: none;
+  }
+  .rightmost-square{
+    border-right: solid;
+    border-width: 2px;
+  }
+  .word-row{
+    margin-top: 0;
+    height: 6vh;
+  }
+}
+@media screen and (max-width: 350px) {
+  .individual-letter-square{
+    width: 4vh;
+    height: 4vh;
+    line-height: 4vh;
+    font-size: 2rem;
+  }
+  .word-row{
+    height: 4vh;
+  }
+  .App{
+    margin-left: 7%;
+  }
+}
