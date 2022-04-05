@@ -22,8 +22,7 @@ function App() {
   const incorrectLetter = new Map()
   let [complete, setComplete] = useState(false)
 
-  console.log(heightScoreValues)
-  console.log(currentWord)
+  // console.log(currentWord)
 
 
   ///Focus on text input when the page loads
@@ -72,10 +71,17 @@ function App() {
     }
 
   }
-  console.log("HELP")
   function focusCursor(){
-    document.getElementById('text-input').focus()
+    if(document.getElementById('text-input')){
+      document.getElementById('text-input').focus()
+    }
   }
+
+  useEffect(() =>{
+    if(heightCounter === 6){
+      setComplete(true)
+    }
+  }, [heightCounter])
 
   // console.log(maybeLetters)
   // console.log(greenArrays)

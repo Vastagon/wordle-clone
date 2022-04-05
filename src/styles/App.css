@@ -76,12 +76,12 @@
   line-height: 5vh;
 }
 .win-screen{
-  background-color: black;
+  background-color: #101820FF;
   position: absolute;
-  width: 40vw;
-  height: 60vh;
-  top: 20vh;
-  left: 30vw;
+  width: 80vw;
+  height: 70vh;
+  top: 15vh;
+  left: 10vw;
   z-index: 5;
   color: white;
 }
@@ -92,8 +92,18 @@
 .refresh-button{
   width: 60%;
   margin-left: 20%;
+  background-color: #a68965;
+  padding: 20px 0;
+  margin-top: 1.5%;
+  font-size: 2rem;
 }
-
+.correct-word{
+  z-index: 100;
+  position: absolute;
+  top: -1%;
+  color: #28231D;
+  font-size: 2rem;
+}
 @media screen and (max-width: 450px) {
   .App{
     margin-top: 70vh;
