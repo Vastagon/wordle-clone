@@ -31,7 +31,7 @@ function App() {
   }, [])
 
 
-
+  ///Sets an indiviual variable to the lowercase values of the text input
   function handleTextInput(e){
       setTextInput(e.target.value.toLowerCase())
   }
@@ -43,8 +43,9 @@ function App() {
       previousTries.push(textInput)
 
       if(currentWord === textInput){
+        ///setComplete used for conditional rendering
         setComplete(true)
-     
+        ///Increases the value of whatever the height counter is plus 1
         heightScoreValues[heightCounter] = heightScoreValues[heightCounter] + 1
 
         ///Turns array into string for local storage
@@ -71,20 +72,20 @@ function App() {
     }
 
   }
+  ///Keeps the browser focused on the text-input
   function focusCursor(){
     if(document.getElementById('text-input')){
       document.getElementById('text-input').focus()
     }
   }
 
+  ///checks if the player loses every time height counter changes
   useEffect(() =>{
     if(heightCounter === 6){
       setComplete(true)
     }
   }, [heightCounter])
 
-  // console.log(maybeLetters)
-  // console.log(greenArrays)
   return (
     <div onClick={focusCursor} className="App">
       {heightCounter === 0 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}

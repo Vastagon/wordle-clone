@@ -11,25 +11,6 @@ export default function WinScreen({heightScoreValues}){
 
     return(
         <div className="win-screen">
-            {/* <div className="one-win win-segment">
-                <p>Line 1 wins: {heightScoreValues[0]}</p>
-            </div>
-            <div className="one-win win-segment">
-                <p>Line 2 wins: {heightScoreValues[1]}</p>
-            </div>
-            <div className="one-win win-segment">
-                <p>Line 3 wins: {heightScoreValues[2]}</p>
-            </div>
-            <div className="one-win win-segment">
-                <p>Line 4 wins: {heightScoreValues[3]}</p>
-            </div>
-            <div className="one-win win-segment">
-                <p>Line 5 wins: {heightScoreValues[4]}</p>
-            </div>
-            <div className="one-win win-segment">
-                <p>Line 6 wins: {heightScoreValues[5]}</p>
-            </div> */}
-
             <Bar 
                 data={{
                     labels: ["Line 1 wins", "Line 2 wins", "Line 3 wins", "Line 4 wins", "Line 5 wins", "Line 6 wins"],
@@ -57,7 +38,6 @@ export default function WinScreen({heightScoreValues}){
                 }}
 
             />
-
             <button className="refresh-button" type="button" onClick={refreshPage}>Play Again</button>
         </div>
     )

@@ -4,7 +4,6 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
     const yellowWord = new Map()
     let greenWord = new Map()
 
-
     ///Only when first word is added
     if(greenArrays){
         greenArrays = greenArrays[0]
@@ -29,9 +28,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, heightCoun
         }
 
     }
-    // console.log(incorrectLetter)
-    // console.log(greenWordValue)
-
+    ///Conditional rendering for each square
     return(
         <div className="word-row">
         {(() => {
