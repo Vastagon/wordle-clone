@@ -32,6 +32,8 @@
   line-height: 10vh;
   font-size: 2rem;
   z-index: 3;
+
+
 }
 .text-input{
   margin-top: 1.5rem;
@@ -104,6 +106,28 @@
   color: #28231D;
   font-size: 2rem;
 }
+.flip{
+  animation-duration: .5s;
+  animation-name: flipping;
+  /* animation-delay: 1000ms; */
+}
+
+
+@keyframes flipping {
+  0%{
+    transform: rotateX(0deg);
+  }
+  50%{
+    transform: rotateX(90deg);
+  }
+  100%{
+    transform: rotateX(0deg);
+  }
+}
+
+
+
+
 @media screen and (max-width: 450px) {
   .App{
     margin-top: 70vh;

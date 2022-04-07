@@ -22,7 +22,7 @@ function App() {
   const incorrectLetter = new Map()
   let [complete, setComplete] = useState(false)
 
-  // console.log(currentWord)
+  console.log(currentWord)
 
 
   ///Focus on text input when the page loads
