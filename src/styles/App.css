@@ -111,6 +111,14 @@
   animation-name: flipping;
   /* animation-delay: 1000ms; */
 }
+.flip2{
+  /* animation-delay: 500ms; */
+}
+.word-row .flip:nth-child(1) {  animation-delay: 500ms}
+.word-row .flip:nth-child(2) {  animation-delay: 1000ms}
+.word-row .flip:nth-child(3) {  animation-delay: 1500ms}
+.word-row .flip:nth-child(4) {  animation-delay: 2000ms}
+.word-row .flip:nth-child(5) {  animation-delay: 2500ms}
 
 
 @keyframes flipping {

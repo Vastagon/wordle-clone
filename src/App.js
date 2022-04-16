@@ -22,9 +22,6 @@ function App() {
   const incorrectLetter = new Map()
   let [complete, setComplete] = useState(false)
 
-  console.log(currentWord)
-
-
   ///Focus on text input when the page loads
   useEffect(() => {
     document.getElementById('text-input').focus()
@@ -82,7 +79,9 @@ function App() {
   ///checks if the player loses every time height counter changes
   useEffect(() =>{
     if(heightCounter === 6){
-      setComplete(true)
+      setTimeout(() =>{
+        setComplete(true)
+      }, 2700)
     }
   }, [heightCounter])
 
