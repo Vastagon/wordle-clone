@@ -106,6 +106,9 @@
   color: #28231D;
   font-size: 2rem;
 }
+.enter-key{
+  width: 20%;
+}
 .flip{
   animation-duration: .5s;
   animation-name: flipping;
@@ -162,6 +165,9 @@
   .word-row{
     margin-top: 0;
     height: 6vh;
+  }
+  .enter-key{
+    width: 50%;
   }
 }
 @media screen and (max-width: 350px) {

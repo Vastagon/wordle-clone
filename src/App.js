@@ -22,6 +22,7 @@ function App() {
   const incorrectLetter = new Map()
   let [complete, setComplete] = useState(false)
 
+
   ///Focus on text input when the page loads
   useEffect(() => {
     document.getElementById('text-input').focus()
@@ -98,7 +99,7 @@ function App() {
         {complete ? null : <input maxLength="5" id="text-input" onChange={handleTextInput} type="text" className="text-input" />}
       </form>
       {complete ? <WinScreen heightScoreValues={heightScoreValues}/> : null}
-      <Keyboard incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} maybeLetters={maybeLetters}/>
+      <Keyboard heightScoreValues={heightScoreValues} setComplete={setComplete} setHeightCounter={setHeightCounter} setTextInput={setTextInput} textInput={textInput} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} previousTries={previousTries} maybeLetters={maybeLetters} greenArrays={greenArrays} setmaybeLetters={setmaybeLetters} currentWord={currentWord} setLetterPositions={setLetterPositions} letterPositions={letterPositions}/>
     </div>  
   );
 }

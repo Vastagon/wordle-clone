@@ -158,14 +158,14 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, maybeLette
                     whiteWord.splice(whiteWord.indexOf(previousTries?.substring(4,5)), 1)
                     return(<div id="s5" className='rightmost-square yellow-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
                 }else if(previousTries?.substring(4,5) === undefined || whiteWord.includes(previousTries?.substring(4,5))){
-                    return(<div id="s5" className='white-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
+                    return(<div id="s5" className='rightmost-square white-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
                 }else{
                     whiteWord.splice(whiteWord.indexOf(previousTries?.substring(4,5)), 1)
                     incorrectLetter.set(previousTries?.substring(4,5), previousTries?.substring(4,5))
                     return(<div id="s5" className='rightmost-square gray-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
                 }
             }else{
-                return(<div id="s5" className='white-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
+                return(<div id="s5" className='rightmost-square white-square flip individual-letter-square'>{previousTries?.substring(4,5)}</div>)
             }
         })()
         }
