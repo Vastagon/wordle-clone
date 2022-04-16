@@ -140,15 +140,19 @@
 
 
 @media screen and (max-width: 450px) {
+  .text-input{
+    display: none;
+  }
   .App{
     margin-top: 70vh;
   }
   .single-key{
-    width: 3.7vh;
-    height: 3.7vh;
+    width: 30px;
+    height: 30px;
     margin-left: .3rem;
     margin-top: .2rem;
-    line-height: 3.7vh;
+    line-height: 30px;
+    font-size: 1rem;
   }
   .individual-letter-square{
     width: 6vh;

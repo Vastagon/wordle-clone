@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react"
 
-export default function PrevWordRow({incorrectLetter, greenWordValue, maybeLetters, currentWord, greenArrays, previousTries}){
+export default function PrevWordRow({setShowKeyboard, incorrectLetter, greenWordValue, maybeLetters, currentWord, greenArrays, previousTries}){
     const yellowWord = new Map()
     const greenWord = new Map()
     const whiteWord = useState(['a','b','c','d','e','f','g','h','i','j','k','l','m','m','o','p','q','r','s','t','u','v','w','x','y','z'])
+
     ///Only when first word is added
     if(greenArrays){
         greenArrays = greenArrays[0]
@@ -12,13 +13,16 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, maybeLette
         for(let i = 0; i < 5; i++){
             ///Greenword saves the indexes of green letters
             greenWord.set(greenArrays[i], greenArrays[i])
+            console.log(greenWord)
+
         }      
         ///checks for all yellow letters
         for(let i = 0; i < 5; i++){
             for(let j = 0; j < 5; j++){
                 if(previousTries?.substring(i,i+1) === currentWord.substring(j,j+1)){
                     yellowWord.set(i,i)
-                    if(!maybeLetters.includes(previousTries?.substring(i,i+1)))
+                    if(!maybeLetters.includes(
+                        previousTries?.substring(i,i+1)))
                         maybeLetters.push(previousTries?.substring(i,i+1))
                 }
             }
@@ -32,6 +36,9 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, maybeLette
 
     useEffect(() =>{
         setTimeout(() =>{
+            setShowKeyboard(true)
+        }, 1000)
+        setTimeout(() =>{
             setTestState(true)
         }, 1000)
         setTimeout(() =>{
@@ -43,7 +50,7 @@ export default function PrevWordRow({incorrectLetter, greenWordValue, maybeLette
         setTimeout(() =>{
             setTestState4(true)
         }, 2500)
-    })
+    }, [greenWordValue])
 
 
     

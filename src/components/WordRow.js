@@ -13,3 +13,7 @@ export default function WordRow({textInput}){
         </div>
     )
 }
+
+
+///Does yellow, but nothing else
+///First letter always changes

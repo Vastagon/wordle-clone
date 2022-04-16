@@ -14,13 +14,20 @@ function App() {
   const [currentWord, setCurrentWord] = useState(wordsList[Math.floor(Math.random() * wordsList.length)])
   const [textInput, setTextInput] = useState("")
   const [greenArrays, setgreenArrays] = useState([])
+  const [showKeyboard, setShowKeyboard] = useState(false)
+
   
   localStorage.height == null ? localStorage.height = "[0,0,0,0,0,0]" : localStorage.height = localStorage.height
   
   const [heightScoreValues, setHeightScoreValues] = useState(JSON.parse(localStorage.height))
-  const greenWordValue = new Map()
-  const incorrectLetter = new Map()
+  // const greenWordValue = new Map()
+  // const incorrectLetter = new Map()
+
+  const [greenWordValue, setGreenWordValue] = useState(new Map())
+  const [incorrectLetter, setIncorrectLetter] = useState(new Map())
   let [complete, setComplete] = useState(false)
+
+  console.log(greenWordValue)
 
 
   ///Focus on text input when the page loads
@@ -28,6 +35,10 @@ function App() {
     document.getElementById('text-input').focus()
   }, [])
 
+
+  const updateMap = (k,v) =>{
+    setGreenWordValue(new Map(greenWordValue.set(k,v)))
+  }
 
   ///Sets an indiviual variable to the lowercase values of the text input
   function handleTextInput(e){
@@ -88,18 +99,18 @@ function App() {
 
   return (
     <div onClick={focusCursor} className="App">
-      {heightCounter === 0 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}
-      {heightCounter === 1 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[1]} letterPositions={letterPositions} previousTries={previousTries[1]}/>}
-      {heightCounter === 2 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[2]} letterPositions={letterPositions} previousTries={previousTries[2]}/>}
-      {heightCounter === 3 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[3]} letterPositions={letterPositions} previousTries={previousTries[3]}/>}
-      {heightCounter === 4 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[4]} letterPositions={letterPositions} previousTries={previousTries[4]}/>}
-      {heightCounter === 5 ? <WordRow textInput={textInput}/> : <PrevWordRow incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
+      {heightCounter === 0 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[0]} letterPositions={letterPositions} previousTries={previousTries[0]}/>}
+      {heightCounter === 1 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[1]} letterPositions={letterPositions} previousTries={previousTries[1]}/>}
+      {heightCounter === 2 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[2]} letterPositions={letterPositions} previousTries={previousTries[2]}/>}
+      {heightCounter === 3 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[3]} letterPositions={letterPositions} previousTries={previousTries[3]}/>}
+      {heightCounter === 4 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[4]} letterPositions={letterPositions} previousTries={previousTries[4]}/>}
+      {heightCounter === 5 ? <WordRow textInput={textInput}/> : <PrevWordRow setShowKeyboard={setShowKeyboard} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} setmaybeLetters={setmaybeLetters} maybeLetters={maybeLetters} currentWord={currentWord} greenArrays={greenArrays[5]} letterPositions={letterPositions} previousTries={previousTries[5]}/>}
       {heightCounter === 6 ? <p className="correct-word">Correct Word: {currentWord}</p> : null}
       <form autoComplete="off" onSubmit={handleFormSubmit}>
         {complete ? null : <input maxLength="5" id="text-input" onChange={handleTextInput} type="text" className="text-input" />}
       </form>
       {complete ? <WinScreen heightScoreValues={heightScoreValues}/> : null}
-      <Keyboard heightScoreValues={heightScoreValues} setComplete={setComplete} setHeightCounter={setHeightCounter} setTextInput={setTextInput} textInput={textInput} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} previousTries={previousTries} maybeLetters={maybeLetters} greenArrays={greenArrays} setmaybeLetters={setmaybeLetters} currentWord={currentWord} setLetterPositions={setLetterPositions} letterPositions={letterPositions}/>
+      <Keyboard setShowKeyboard={setShowKeyboard} showKeyboard={showKeyboard} heightScoreValues={heightScoreValues} setComplete={setComplete} setHeightCounter={setHeightCounter} setTextInput={setTextInput} textInput={textInput} incorrectLetter={incorrectLetter} greenWordValue={greenWordValue} heightCounter={heightCounter} previousTries={previousTries} maybeLetters={maybeLetters} greenArrays={greenArrays} setmaybeLetters={setmaybeLetters} currentWord={currentWord} setLetterPositions={setLetterPositions} letterPositions={letterPositions}/>
     </div>  
   );
 }

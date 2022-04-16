@@ -1,15 +1,22 @@
+import { useEffect } from "react"
 import wordsList from "../words.json"
 
 
-export default function Keyboard({letterPositions, setLetterPositions, greenArrays, setHeightCounter, heightCounter, previousTries, setComplete, heightScoreValues, currentWord, setTextInput, textInput, greenWordValue, maybeLetters, incorrectLetter}){
+export default function Keyboard({showKeyboard, setShowKeyboard, letterPositions, setLetterPositions, greenArrays, setHeightCounter, heightCounter, previousTries, setComplete, heightScoreValues, currentWord, setTextInput, textInput, greenWordValue, maybeLetters, incorrectLetter}){
     function handleButton(e){
         setTextInput(prev => prev + e.target.name)
     }
+
+    useEffect(() =>{
+        setShowKeyboard(true)
+    }, )
 
     function backspace(){
         let end = textInput.length
         setTextInput(prev => prev.substring(0,end-1))
     }
+
+    console.log(greenArrays)
 
     function handleFormSubmit(e){
         e.preventDefault()
@@ -35,6 +42,8 @@ export default function Keyboard({letterPositions, setLetterPositions, greenArra
             if(currentWord.substring(i,i+1) === textInput.substring(i,i+1)){
               letterPositions.push(i)
             }
+
+            console.log(letterPositions)
           }
     
           ///Clears the inputs
@@ -46,7 +55,9 @@ export default function Keyboard({letterPositions, setLetterPositions, greenArra
           alert("Word doesn't exist")
         }
     }
+///i from white to gray after rerender
 
+    if(!showKeyboard) return null
 
     return(
         <div className="keyboard">
